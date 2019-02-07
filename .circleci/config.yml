@@ -1,8 +1,7 @@
 version: 2
 
 jobs:
-  build-test:
-    working_directory: ~/swe-camp-2019
+  build:
     docker:
       - image: circleci/php:5.6-node-browsers
     steps:
