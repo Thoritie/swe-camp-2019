@@ -11,4 +11,4 @@ jobs:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - ./composer install
-      - ./vendor/bin/phpunit
+      - ./application/test/phpunit
