@@ -11,7 +11,7 @@ jobs:
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: phpunit --version
       - run: 
-          command:
+          command: |
             cd application/tests/
             pwd
             phpunit
