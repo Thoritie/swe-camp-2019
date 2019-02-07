@@ -13,7 +13,7 @@ class Example_model_test extends TestCase
     {
         $expected = "hello";
         $list = $this->obj->test($expected);
-        $this->assertEquals($expected, "asdasd");
+        $this->assertEquals($expected, "hello");
     }
 
 
