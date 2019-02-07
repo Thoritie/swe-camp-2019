@@ -9,5 +9,5 @@ jobs:
       - run:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
-      - ./composer install
-      - ./application/test/phpunit
+      - run: composer install
+      - run: ./application/test/phpunit
