@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Swe2019">
+    <rule ref="PEAR"/>
+    <file>../application/views</file>
+    <exclude-pattern>errors</exclude-pattern>
+    <arg name="colors"/>
+</ruleset>
