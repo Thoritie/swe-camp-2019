@@ -9,12 +9,14 @@ jobs:
         environment:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
+      
     steps:
       - checkout
       - run:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: composer install
+      - run: sudo docker-php-ext-install zip pdo pdo_mysql
       - run:
           name: Mysql database
           command: mysql  -h 127.0.0.1 -u root < db/sweregrade.sql
