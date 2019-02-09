@@ -10,4 +10,5 @@ jobs:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: composer install
+      - run: ../../vendor/bin/phpcs
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
