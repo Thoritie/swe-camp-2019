@@ -18,7 +18,8 @@ jobs:
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: composer install
       - run: sudo docker-php-ext-install zip pdo pdo_mysql
+      - run: sudo docker-php-ext-install mysqli && docker-php-ext-enable mysqli
       - run:
-          name: Mysql database
+          name: Import Database
           command: mysql  -h 127.0.0.1 -u root < db/sweregrade.sql
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
