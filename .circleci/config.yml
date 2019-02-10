@@ -21,15 +21,13 @@ jobs:
       - run:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
-      - run: composer install
-  
+          
   static_analysis:
     <<: *defaults
     steps:
       - attach_workspace:
-        at: .
-      - run: pwd
-      - run: ls
+          at: .
+      - run: composer install
       - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
 
   unit_tests:
@@ -37,8 +35,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: pwd
-      - run: ls
+      - run: composer install
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
 
 
