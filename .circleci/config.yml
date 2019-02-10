@@ -26,15 +26,19 @@ jobs:
   static_analysis:
     <<: *defaults
     steps:
-       - attach_workspace:
-          at: .
-       - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
-  
+      - attach_workspace:
+        at: .
+      - run: pwd
+      - run: ls
+      - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
+
   unit_tests:
     <<: *defaults
     steps:
       - attach_workspace:
           at: .
+      - run: pwd
+      - run: ls
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
 
 
