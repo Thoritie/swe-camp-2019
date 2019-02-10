@@ -36,7 +36,7 @@ workflows:
       - checkout_code
       - build_test:
           requires:
-            - checkout
+            - checkout_code
       - static_analysis:
           requires: 
             - build_test
