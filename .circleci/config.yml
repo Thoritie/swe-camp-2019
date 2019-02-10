@@ -40,7 +40,6 @@ jobs:
           MYSQL_DATABASE: sweregrade
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-    
     steps:
       - attach_workspace:
           at: .
