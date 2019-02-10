@@ -1,8 +1,9 @@
-<?php 
+<?php
 
-class User_model extends CI_Model {
+class UserModel extends CI_Model
+{
 
-    public function create($id,$username,$password,$role)
+    public function create($id, $username, $password, $role)
     {
         $data = array(
             'userid' => $id,
@@ -13,7 +14,4 @@ class User_model extends CI_Model {
         $this->db->insert('user', $data);
         return ($this->db->affected_rows() != 1) ? false : true;
     }
-
 }
-
-?>

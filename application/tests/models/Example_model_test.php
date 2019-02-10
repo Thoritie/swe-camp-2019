@@ -5,8 +5,8 @@ class Example_model_test extends TestCase
     public function setUp()
     {
         $this->resetInstance();
-        $this->CI->load->model('Test_model');
-        $this->obj = $this->CI->Test_model;
+        $this->CI->load->model('TestModel');
+        $this->obj = $this->CI->TestModel;
     }
 
     public function test_get_test_list()
