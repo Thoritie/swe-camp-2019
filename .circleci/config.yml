@@ -1,14 +1,45 @@
-version: 2
-
-jobs:
-  build:
-    docker:
+defaults: &defaults
+  # working_directory: ~/swe-camp-2019
+  docker:
       - image: circleci/php:5.6-node-browsers
+
+version: 2
+jobs:
+  checkout_code:
+    <<: *defaults
     steps:
       - checkout
+
+  build_test:
+    <<: *defaults
+    steps:
       - run:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: composer install
-      - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
+  
+  static_analysis:
+    <<: *defaults
+    steps:
+       - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
+  
+  unit_tests:
+    <<: *defaults
+    steps:
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
+
+
+workflows:
+  version: 2
+  swe_camp_pipeline:
+    jobs:
+      - checkout_code
+      - build_test:
+          requires:
+            - checkout
+      - static_analysis:
+          requires: 
+            - build_test
+      - unit_tests:
+          requires:
+            - build_test
