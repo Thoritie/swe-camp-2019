@@ -9,10 +9,15 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - persist_to_workspace:
+          root: .
+          paths: .
 
   build_test:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Install composer
           command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
@@ -21,11 +26,15 @@ jobs:
   static_analysis:
     <<: *defaults
     steps:
+       - attach_workspace:
+          at: .
        - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
   
   unit_tests:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: .
       - run:  cd application/tests/ && ../../vendor/bin/phpunit
 
 
