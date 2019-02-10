@@ -5,8 +5,8 @@ class User_model_test extends TestCase
     public function setUp()
     {
         $this->resetInstance();
-        $this->CI->load->model('User_model');
-        $this->obj = $this->CI->User_model;
+        $this->CI->load->model('UserModel');
+        $this->obj = $this->CI->UserModel;
     }
 
     public function test_insert_user()
